@@ -27,14 +27,14 @@ Lancement de l'interface web (dans un second terminal) :
 ## Problèmes rencontrés
 
 - Android Virtual Device sous Docker (x86) incompatible avec le framework cuckoo-droid
- - L'AVD est en x86, le framework ne supporte pas ce type d'architecture.
- - Manque d'informations/documentations pour créer un AVD dans un container.
+  - L'AVD est en x86, le framework ne supporte pas ce type d'architecture.
+  - Manque d'informations/documentations pour créer un AVD dans un container.
 
 
 - Manque de ressources et d'informations pour mener à bien le projet
- - Documentation peu fournie concernant la cuckoo-droid.
+  - Documentation peu fournie concernant la cuckoo-droid.
 
 
 - Manque de temps pour ce type de projet.
- - Nécessité d'apprendre à utiliser docker
- - Nombreux problèmes rencontrés (base de données, librairies python..)
+  - Nécessité d'apprendre à utiliser docker
+  - Nombreux problèmes rencontrés (base de données, librairies python..)
