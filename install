@@ -1,0 +1,30 @@
+#/bin/bash
+
+echo "Le script suivant nécessite les droits ROOT pour être utilisé. Si celui-ci a été exécuté depuis un utilisateur lambda, vous serez amené à entrer votre mot de passe super-utilisateur."
+# Création d'un nom de volume aléatoire
+volume=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1)
+sudo docker volume create $volume
+
+# Contruction de l'image cuckoodroid qui supportera l'application
+sudo docker build -t cuckoodroid:1.0 .
+
+# Lancement de l'AVD - lien https://github.com/budtmo/docker-android
+sudo docker run --privileged -d -v $volume:/root/ -p 6080:6080 -p 5554:5554 -p 5555:5555 -e DEVICE="Nexus 5" --name cuckoo-avd budtmo/docker-android-x86-8.1
+
+# Lancement de l'application cuckoodroid
+sudo docker run -d -v $volume:/root/ -p 5556:5554 -p 2042:2042 -p 8080:8080 --name cuckoo-droid cuckoodroid:1.0 /bin/bash -c "while true;do echo 1; sleep 60; done"
+sleep 3
+
+# Liaison de l'AVD à l'application 
+sudo docker exec cuckoo-droid ln -s /root/android_emulator/ /root/.android/avd/android_emulator.avd
+sudo docker exec cuckoo-droid cp /root/.android/avd/nexus_5_8.1.ini /root/.android/avd/android_emulator.ini
+sudo docker exec cuckoo-droid sed -i 's/path=\/root\/android_emulator/path=\/root\/.android\/avd\/android_emulator.avd/g' /root/.android/avd/android_emulator.ini
+
+# Fin de la mise en place
+echo "
+Vous pouvez exécuter dans deux terminaux différents les commandes suivantes afin de lancer l'interface web pour débuter l'analyse : 
+  -  sudo docker exec -it cuckoo-droid python /cuckoo/cuckoo.py
+  -  sudo docker exec -it cuckoo-droid python /cuckoo/utils/web.py
+
+Vous pourrez ainsi accéder à l'interface web de cuckoo via http://localhost:8080 et à l'interface NOVnc de l'AVD via http://localhost:6080
+"

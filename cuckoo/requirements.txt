@@ -1,0 +1,12 @@
+sqlalchemy==0.9.9
+bson
+jinja2
+pymongo
+bottle
+pefile
+django
+chardet
+nose
+protobuf
+requests
+androguard==3.0
