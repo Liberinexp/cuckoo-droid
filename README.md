@@ -10,9 +10,8 @@ Note : Application non fonctionnelle car nécessité d'avoir un AVD compatible.
 
 Téléchargement et installation des containers :
 
-'git clone https://github.com/Liberinexp/cuckoo-droid.git'
-`tar -xzvf cuckoodroid.tar.gz`
-`cd cuckoodroid`
+`git clone https://github.com/Liberinexp/cuckoo-droid.git`
+`cd cuckoo-droid`
 `sudo sh install`
 
 Lancement de la cuckoo-droid :
@@ -20,7 +19,7 @@ Lancement de la cuckoo-droid :
 `sudo docker exec -it cuckoo-droid python /cuckoo/cuckoo.py`
 
 
-Lancement de l'interface web :
+Lancement de l'interface web (dans un second terminal) :
 
 `sudo docker exec -it cuckoo-droid python /cuckoo/utils/web.py`  
 
