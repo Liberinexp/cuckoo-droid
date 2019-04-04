@@ -8,6 +8,8 @@ Note : Application non fonctionnelle car nécessité d'avoir un AVD compatible.
 
 ## Utilisation
 
+Cette application nécessite docker.
+
 Téléchargement et installation des containers :
 
 `git clone https://github.com/Liberinexp/cuckoo-droid.git`
