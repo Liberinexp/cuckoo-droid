@@ -12,18 +12,18 @@ Cette application nécessite docker.
 
 Téléchargement et installation des containers :
 
-`git clone https://github.com/Liberinexp/cuckoo-droid.git`
-`cd cuckoo-droid`
-`sudo sh install`
+    git clone https://github.com/Liberinexp/cuckoo-droid.git
+    cd cuckoo-droid
+    sudo sh install
 
 Lancement de la cuckoo-droid :
 
-`sudo docker exec -it cuckoo-droid python /cuckoo/cuckoo.py`
+    sudo docker exec -it cuckoo-droid python /cuckoo/cuckoo.py
 
 
 Lancement de l'interface web (dans un second terminal) :
 
-`sudo docker exec -it cuckoo-droid python /cuckoo/utils/web.py`  
+    sudo docker exec -it cuckoo-droid python /cuckoo/utils/web.py
 
 
 ## Problèmes rencontrés
